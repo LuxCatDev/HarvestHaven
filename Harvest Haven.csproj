@@ -9,4 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Firebelley.GodotUtilities" Version="5.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Items\Consumables\" />
+    <Folder Include="Entities\Items\RawMaterials\Data\" />
+    <Folder Include="Entities\Items\SeedPacks\" />
+    <Folder Include="Entities\Items\Tools\" />
+    <Folder Include="Entities\UI\InventorySlot\" />
+  </ItemGroup>
 </Project>

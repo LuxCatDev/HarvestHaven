@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RawMaterial" load_steps=5 format=3 uid="uid://bnenh6lsylftb"]
+
+[ext_resource type="Texture2D" uid="uid://dnc03gvccmbod" path="res://Entities/Items/RawMaterials/Art/RawMaterials.png" id="1_nl30l"]
+[ext_resource type="Script" path="res://Entities/Items/RawMaterials/RawMaterial.cs" id="1_ymvov"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsrmi"]
+atlas = ExtResource("1_nl30l")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk4xh"]
+atlas = ExtResource("1_nl30l")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_ymvov")
+Name = "Wood"
+Description = "Raw Wood"
+Logo = SubResource("AtlasTexture_fsrmi")
+Texture = SubResource("AtlasTexture_sk4xh")
+Value = 25
+MaxStackSize = 16

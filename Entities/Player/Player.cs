@@ -1,3 +1,4 @@
+using Game.Common.Inventory;
 using Game.Common.StateMachine;
 using Godot;
 using GodotUtilities;
@@ -22,6 +23,9 @@ public partial class Player : CharacterBody2D
     
     [Node]
     public StateMachine StateMachine;
+    
+    [Node("Components/Inventory")]
+    public Inventory Inventory;
 
     [Node] public Node2D Textures;
     
@@ -64,6 +68,7 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         CardinalDirection = Vector2.Down;
+        GameManager.Instance.Player = this;
         StateMachine.Init();
     }
 

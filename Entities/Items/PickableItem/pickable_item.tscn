@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmcvn53mvfb2v"]
+
+[ext_resource type="Script" path="res://Entities/Items/PickableItem/PickableItem.cs" id="1_v3pw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwo88"]
+radius = 12.0
+
+[sub_resource type="Animation" id="Animation_7id8s"]
+resource_name = "Bounce"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u8v8u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sd3k5"]
+_data = {
+"Bounce": SubResource("Animation_7id8s"),
+"RESET": SubResource("Animation_u8v8u")
+}
+
+[node name="PickableItem" type="StaticBody2D"]
+z_index = 1
+script = ExtResource("1_v3pw1")
+
+[node name="Texture" type="Sprite2D" parent="."]
+
+[node name="PickingArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickingArea"]
+shape = SubResource("CircleShape2D_jwo88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sd3k5")
+}
+
+[connection signal="body_entered" from="PickingArea" to="." method="OnPickingAreaBodyEntered"]

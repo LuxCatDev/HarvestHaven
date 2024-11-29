@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3tie3eqavcpl"]
+
+[ext_resource type="Script" path="res://Entities/UI/InventorySlot/InventorySlot.cs" id="1_xwbhj"]
+[ext_resource type="FontFile" uid="uid://cbmvwwd3viasc" path="res://Assets/Fonts/BitPotion.ttf" id="3_t8wp2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_csvc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_diila"]
+content_margin_left = 0.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpfan"]
+font = ExtResource("3_t8wp2")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InventorySlot" type="Control"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xwbhj")
+
+[node name="Icon" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_csvc5")
+
+[node name="Texture" type="TextureRect" parent="Icon"]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="Icon"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_diila")
+label_settings = SubResource("LabelSettings_rpfan")
+horizontal_alignment = 2
