@@ -20,10 +20,16 @@ public partial class PlayerInventoryDialog: Control
 
     [Node]
     private GridContainer _mainInventoryGrid;
+    
+    [Node]
+    private GridContainer _toolInventoryGrid;
 
     private List<InventorySlot> _slots;
 
+    private List<InventorySlot> _toolSlots;
+
     private Inventory _inventory;
+    private Inventory _toolInventory;
 
     private PackedScene _slotScene = GD.Load<PackedScene>("res://Entities/UI/InventorySlot/inventory_slot.tscn");
 
@@ -41,10 +47,13 @@ public partial class PlayerInventoryDialog: Control
     public void Load()
     {
         _slots = new();
+        _toolSlots = new();
 
         _inventory = GameManager.Instance.Player.Inventory;
+        _toolInventory = GameManager.Instance.Player.ToolInventory;
 
         _inventory.Updated += OnInventoryUpdated;
+        _toolInventory.Updated += OnToolInventoryUpdated;
 
         foreach(int index in Enumerable.Range(0, _inventory.Size))
         {
@@ -65,6 +74,26 @@ public partial class PlayerInventoryDialog: Control
                     slot.SetEmpty();
                 }
         }
+        
+        foreach(int index in Enumerable.Range(0, _toolInventory.Size))
+        {
+            InventorySlot slot = _slotScene.Instantiate<InventorySlot>();
+            slot.Index = index;
+            slot.Inventory = _toolInventory;
+
+            _toolInventoryGrid.AddChild(slot);
+
+            _toolSlots.Add(slot);
+            
+            if (_toolInventory.Items[slot.Index] != null)
+            {
+                slot.SetItem(_toolInventory.Items[slot.Index]);
+            }
+            else
+            {
+                slot.SetEmpty();
+            }
+        }
     }
 
     public void OnInventoryUpdated()
@@ -74,6 +103,19 @@ public partial class PlayerInventoryDialog: Control
             if (_inventory.Items[slot.Index] != null)
             {
                 slot.SetItem(_inventory.Items[slot.Index]);
+            } else {
+                slot.SetEmpty();
+            }
+        }
+    }
+    
+    public void OnToolInventoryUpdated()
+    {
+        foreach(InventorySlot slot in _toolSlots)
+        {
+            if (_toolInventory.Items[slot.Index] != null)
+            {
+                slot.SetItem(_toolInventory.Items[slot.Index]);
             } else {
                 slot.SetEmpty();
             }

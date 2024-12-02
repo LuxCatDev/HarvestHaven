@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca3f4keg41eh4"]
+
+[ext_resource type="Script" path="res://Entities/ToolManager/ToolManager.cs" id="1_7vpo3"]
+
+[node name="ToolManager" type="Node"]
+script = ExtResource("1_7vpo3")

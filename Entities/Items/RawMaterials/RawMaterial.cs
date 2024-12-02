@@ -9,5 +9,6 @@ public partial class RawMaterial : Item
 
     public RawMaterial(string name, string description, AtlasTexture logo, AtlasTexture texture, int value, int maxStackSize) : base(name, description, logo, texture, value, maxStackSize)
     {
+        Category = ItemCategory.RawMaterial;
     }
 }

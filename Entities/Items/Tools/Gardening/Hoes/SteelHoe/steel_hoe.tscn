@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0jn36c3ip1yn"]
+
+[ext_resource type="PackedScene" uid="uid://btmserft7n0e6" path="res://Entities/Items/Tools/Gardening/gardening_tool.tscn" id="1_j8065"]
+[ext_resource type="Texture2D" uid="uid://clbw8imh8ux0" path="res://Entities/Items/Tools/Gardening/Hoes/SteelHoe/Art/SteelHoe.png" id="2_f83gd"]
+
+[node name="SteelHoe" instance=ExtResource("1_j8065")]
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_f83gd")

@@ -32,3 +32,13 @@ offset_bottom = -28.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 7
+
+[node name="ToolInventoryGrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = -174.0
+offset_top = 44.0
+offset_right = -142.0
+offset_bottom = 76.0
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 0
+columns = 3

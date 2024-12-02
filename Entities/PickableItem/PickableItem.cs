@@ -2,7 +2,7 @@ using Game.Common.Inventory;
 using Godot;
 using GodotUtilities;
 
-namespace Game.Entities.Items.PickableItem;
+namespace Game.Entities.PickableItem;
 
 [Scene]
 public partial class PickableItem : StaticBody2D

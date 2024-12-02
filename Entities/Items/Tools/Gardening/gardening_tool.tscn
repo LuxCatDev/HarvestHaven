@@ -1,0 +1,307 @@
+[gd_scene load_steps=19 format=3 uid="uid://btmserft7n0e6"]
+
+[ext_resource type="Script" path="res://Entities/Items/Tools/Gardening/GardeningTool.cs" id="1_uxea8"]
+
+[sub_resource type="Animation" id="Animation_051x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_lqh4o"]
+resource_name = "Use_N"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [62, 63]
+}
+
+[sub_resource type="Animation" id="Animation_tkpuf"]
+resource_name = "Use_NW"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [60, 61]
+}
+
+[sub_resource type="Animation" id="Animation_6b6p3"]
+resource_name = "Use_S"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [54, 55]
+}
+
+[sub_resource type="Animation" id="Animation_rdpbo"]
+resource_name = "Use_SW"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [56, 57]
+}
+
+[sub_resource type="Animation" id="Animation_3vy7a"]
+resource_name = "Use_W"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [58, 59]
+}
+
+[sub_resource type="Animation" id="Animation_vdkkn"]
+resource_name = "Idle_N"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+
+[sub_resource type="Animation" id="Animation_pg2nb"]
+resource_name = "Idle_NW"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="Animation" id="Animation_ngbgd"]
+resource_name = "Idle_SW"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
+[sub_resource type="Animation" id="Animation_k37pp"]
+resource_name = "Idle_S"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [29]
+}
+
+[sub_resource type="Animation" id="Animation_eiwqo"]
+resource_name = "Idle_W"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31]
+}
+
+[sub_resource type="Animation" id="Animation_vdjc2"]
+resource_name = "Walk_N"
+length = 0.7
+loop_mode = 1
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53]
+}
+
+[sub_resource type="Animation" id="Animation_k1cqv"]
+resource_name = "Walk_NW"
+length = 0.7
+loop_mode = 1
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [46, 47, 48, 49]
+}
+
+[sub_resource type="Animation" id="Animation_xnqfj"]
+resource_name = "Walk_S"
+length = 0.7
+loop_mode = 1
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_j5tt8"]
+resource_name = "Walk_SW"
+length = 0.7
+loop_mode = 1
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_jtcbs"]
+resource_name = "Walk_W"
+length = 0.7
+loop_mode = 1
+step = 0.175
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175, 0.35, 0.525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5in8u"]
+_data = {
+"Idle_Tool_N": SubResource("Animation_vdkkn"),
+"Idle_Tool_NW": SubResource("Animation_pg2nb"),
+"Idle_Tool_S": SubResource("Animation_k37pp"),
+"Idle_Tool_SW": SubResource("Animation_ngbgd"),
+"Idle_Tool_W": SubResource("Animation_eiwqo"),
+"RESET": SubResource("Animation_051x3"),
+"Use_N": SubResource("Animation_lqh4o"),
+"Use_NW": SubResource("Animation_tkpuf"),
+"Use_S": SubResource("Animation_6b6p3"),
+"Use_SW": SubResource("Animation_rdpbo"),
+"Use_W": SubResource("Animation_3vy7a"),
+"Walk_Tool_N": SubResource("Animation_vdjc2"),
+"Walk_Tool_NW": SubResource("Animation_k1cqv"),
+"Walk_Tool_S": SubResource("Animation_xnqfj"),
+"Walk_Tool_SW": SubResource("Animation_j5tt8"),
+"Walk_Tool_W": SubResource("Animation_jtcbs")
+}
+
+[node name="GardeningTool" type="Node2D"]
+script = ExtResource("1_uxea8")
+
+[node name="Texture" type="Sprite2D" parent="."]
+offset = Vector2(0, -32)
+hframes = 8
+vframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5in8u")
+}

@@ -48,7 +48,15 @@ public partial class InventorySlot : Control
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
 		var inventorySlot = data.As<InventorySlot>();
-		return inventorySlot != null;
+		
+		if (inventorySlot == null) return false;
+		
+		if (Inventory.Strict)
+		{
+			if (!Inventory.IsCategoryAccepted(inventorySlot.Stack.ItemType.Category)) return false;
+		}
+		
+		return true;
 	}
 
 	public override void _DropData(Vector2 atPosition, Variant data)

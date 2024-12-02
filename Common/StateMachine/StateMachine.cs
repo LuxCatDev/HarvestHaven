@@ -51,6 +51,7 @@ public partial class StateMachine : Node
 
         _currentState = state;
 
+        state.Active = true;
         state.Enter();
     }
 

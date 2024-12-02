@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="GardeningToolItem" load_steps=6 format=3 uid="uid://cnae4tyrlaha"]
+
+[ext_resource type="Texture2D" uid="uid://cdyqnt1yh3ni3" path="res://Entities/Items/Tools/Gardening/Hoes/Art/Hoes.png" id="1_fb2t8"]
+[ext_resource type="Script" path="res://Entities/Items/Tools/Gardening/GardeningToolItem.cs" id="1_o684r"]
+[ext_resource type="PackedScene" uid="uid://b0jn36c3ip1yn" path="res://Entities/Items/Tools/Gardening/Hoes/SteelHoe/steel_hoe.tscn" id="2_o8s5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngjn8"]
+atlas = ExtResource("1_fb2t8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhnkn"]
+atlas = ExtResource("1_fb2t8")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_o684r")
+DigArea = Vector2(1, 1)
+Scene = ExtResource("2_o8s5w")
+Name = "Steel Hoe"
+Description = "Steel Hoe"
+Logo = SubResource("AtlasTexture_ngjn8")
+Texture = SubResource("AtlasTexture_vhnkn")
+Value = 50
+MaxStackSize = 1
+Category = 1

@@ -6,6 +6,8 @@ namespace Game.Common.StateMachine;
 
 public partial class State: Node
 {
+    public bool Active;
+    
     public Player Player;
 
     public StateMachine StateMachine;
@@ -17,6 +19,7 @@ public partial class State: Node
 
     public void Init()
     {
+        Active = false;
         _events = new();
         
         foreach(StateEvent stateEvent in _launchEvents)
@@ -34,7 +37,6 @@ public partial class State: Node
     }
 
     public virtual void Enter() {
-
     }
     public virtual void Exit() {
 

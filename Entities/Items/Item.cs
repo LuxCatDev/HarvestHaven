@@ -2,6 +2,15 @@ using Godot;
 
 namespace Game.Entities.Items;
 
+public enum ItemCategory
+{
+    Item,
+    Tool,
+    Seed,
+    RawMaterial,
+    Consumable
+}
+
 [GlobalClass]
 public partial class Item : Resource
 {
@@ -22,6 +31,9 @@ public partial class Item : Resource
 
     [Export]
     public int MaxStackSize = 1;
+
+    [Export]
+    public ItemCategory Category = ItemCategory.Item;
 
     private Item() : this("", "", null, null, 0, 1) {}
 

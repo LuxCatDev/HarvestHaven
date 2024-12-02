@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Game.Entities.Items;
 using Godot;
 
 namespace Game.Common.Inventory;
@@ -12,6 +13,10 @@ public partial class Inventory : Node
 
     [Export]
     public int Size;
+
+    [Export] public Godot.Collections.Array<ItemCategory> AllowedItemCategories;
+
+    public bool Strict => AllowedItemCategories != null && AllowedItemCategories.Count != 0;
 
     public List<ItemStack> Items;
 
@@ -47,6 +52,8 @@ public partial class Inventory : Node
 
     public ItemStack AddItem(ItemStack newStack)
     {
+        if (Strict && !AllowedItemCategories.Contains(newStack.ItemType.Category)) return newStack;
+        
         var stacks = Items.Where(stack => stack != null && stack.ItemType == newStack.ItemType);
 
         var itemStacks = stacks as ItemStack[] ?? stacks.ToArray();
@@ -97,6 +104,8 @@ public partial class Inventory : Node
 
     public ItemStack AddItemAt(ItemStack newStack, int index)
     {
+        if (Strict && !AllowedItemCategories.Contains(newStack.ItemType.Category)) return newStack;
+
         ItemStack stack = Items[index];
 
         if (stack.ItemType != newStack.ItemType) return newStack;
@@ -176,5 +185,10 @@ public partial class Inventory : Node
         }
 
         return null;
+    }
+
+    public bool IsCategoryAccepted(ItemCategory category)
+    {
+        return AllowedItemCategories.Contains(category);
     }
 }

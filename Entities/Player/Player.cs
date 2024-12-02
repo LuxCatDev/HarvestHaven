@@ -26,6 +26,12 @@ public partial class Player : CharacterBody2D
     
     [Node("Components/Inventory")]
     public Inventory Inventory;
+    
+    [Node("Components/ToolInventory")]
+    public Inventory ToolInventory;
+    
+    [Node("Components/ToolManager")]
+    public ToolManager.ToolManager ToolManager;
 
     [Node] public Node2D Textures;
     
