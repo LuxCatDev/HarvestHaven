@@ -8,4 +8,13 @@ public partial class Tool : Node
     {
         
     }
+    
+    public virtual void Equip(){
+
+    }
+
+    public virtual void UnEquip()
+    {
+
+    }
 }

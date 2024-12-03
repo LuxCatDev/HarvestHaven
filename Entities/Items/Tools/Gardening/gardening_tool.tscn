@@ -1,6 +1,98 @@
-[gd_scene load_steps=19 format=3 uid="uid://btmserft7n0e6"]
+[gd_scene load_steps=23 format=3 uid="uid://btmserft7n0e6"]
 
 [ext_resource type="Script" path="res://Entities/Items/Tools/Gardening/GardeningTool.cs" id="1_uxea8"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/TerrainRule.cs" id="2_4alax"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="3_c3iro"]
+
+[sub_resource type="Resource" id="Resource_5kf3t"]
+script = ExtResource("2_4alax")
+AllowedTerrains = Array[int]([1, 2])
+
+[sub_resource type="Resource" id="Resource_fxc2v"]
+script = ExtResource("3_c3iro")
+Rules = Array[Object]([SubResource("Resource_5kf3t")])
+Traits = null
+Size = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_vdkkn"]
+resource_name = "Idle_N"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+
+[sub_resource type="Animation" id="Animation_pg2nb"]
+resource_name = "Idle_NW"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="Animation" id="Animation_k37pp"]
+resource_name = "Idle_S"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [29]
+}
+
+[sub_resource type="Animation" id="Animation_ngbgd"]
+resource_name = "Idle_SW"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
+[sub_resource type="Animation" id="Animation_eiwqo"]
+resource_name = "Idle_W"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [31]
+}
 
 [sub_resource type="Animation" id="Animation_051x3"]
 length = 0.001
@@ -100,86 +192,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [58, 59]
-}
-
-[sub_resource type="Animation" id="Animation_vdkkn"]
-resource_name = "Idle_N"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [33]
-}
-
-[sub_resource type="Animation" id="Animation_pg2nb"]
-resource_name = "Idle_NW"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [32]
-}
-
-[sub_resource type="Animation" id="Animation_ngbgd"]
-resource_name = "Idle_SW"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [30]
-}
-
-[sub_resource type="Animation" id="Animation_k37pp"]
-resource_name = "Idle_S"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [29]
-}
-
-[sub_resource type="Animation" id="Animation_eiwqo"]
-resource_name = "Idle_W"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [31]
 }
 
 [sub_resource type="Animation" id="Animation_vdjc2"]
@@ -294,6 +306,7 @@ _data = {
 
 [node name="GardeningTool" type="Node2D"]
 script = ExtResource("1_uxea8")
+_selectorConfig = SubResource("Resource_fxc2v")
 
 [node name="Texture" type="Sprite2D" parent="."]
 offset = Vector2(0, -32)

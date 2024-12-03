@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using System.Linq;
 using Game.Entities.CellSelection.Config;
@@ -17,19 +18,38 @@ public partial class CellSelectorGroup : Node2D
 		}
 	}
 
-	[Export] public Vector2 Size = new(1, 1);
 	[Export] private PackedScene _cellSelectorScene;
 
-	[Node("Selectors")] private Node2D _selectors;
+	private List<CellSelector> _selectors;
+
+	[Node("Selectors")] private Node2D _selectorsWrapper;
 	
-	[Export] public CellSelectorConfig Config;
+	public CellSelectorConfig Config;
+
+	public bool Valid
+	{
+		get
+		{
+			foreach (var selector in _selectors)
+			{
+				if (!selector.State)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+	}
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		foreach (var y in Enumerable.Range(0, (int)Size.Y))
+		_selectors = new List<CellSelector>();
+		
+		foreach (var y in Enumerable.Range(0, (int)Config.Size.Y))
 		{
-			foreach (var x in Enumerable.Range(0, (int)Size.X))
+			foreach (var x in Enumerable.Range(0, (int)Config.Size.X))
 			{
 				if (x == 0 && y == 0)
 				{
@@ -37,7 +57,8 @@ public partial class CellSelectorGroup : Node2D
 						
 					cellSelector.Config = Config;
 					
-					_selectors.AddChild(cellSelector);
+					_selectorsWrapper.AddChild(cellSelector);
+					_selectors.Add(cellSelector);
 				}
 				else
 				{
@@ -47,7 +68,8 @@ public partial class CellSelectorGroup : Node2D
 				
 					cellSelector.Position = new Vector2(32 * x - 32 * y, 16 * x + 16 * y);
 					
-					_selectors.AddChild(cellSelector);
+					_selectorsWrapper.AddChild(cellSelector);
+					_selectors.Add(cellSelector);
 				}
 				
 			}

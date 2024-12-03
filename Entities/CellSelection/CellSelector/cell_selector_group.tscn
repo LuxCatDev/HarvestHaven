@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://caql0sdir7bhf"]
+[gd_scene load_steps=3 format=3 uid="uid://caql0sdir7bhf"]
 
 [ext_resource type="Script" path="res://Entities/CellSelection/CellSelector/CellSelectorGroup.cs" id="1_dln8i"]
+[ext_resource type="PackedScene" uid="uid://b5ep4s4m425b0" path="res://Entities/CellSelection/CellSelector/cell_selector.tscn" id="2_1gl53"]
 
 [node name="CellSelectorGroup" type="Node2D"]
+z_as_relative = false
 script = ExtResource("1_dln8i")
+_cellSelectorScene = ExtResource("2_1gl53")
 
 [node name="Selectors" type="Node2D" parent="."]

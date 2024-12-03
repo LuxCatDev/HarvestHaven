@@ -31,11 +31,12 @@ public partial class ToolManager : Node
 			{
 				_equipedTool = value;
 				Textures.AddChild(value);
+				value.Equip();
 				EmitSignal(SignalName.OnToolEquiped);
 			}
 			else
 			{
-				_equipedTool.QueueFree();
+				if (_equipedTool != null) _equipedTool.QueueFree();
 				_equipedTool = null;
 				EmitSignal(SignalName.OnUnEquipTool);
 			}
@@ -57,6 +58,10 @@ public partial class ToolManager : Node
 		}
 		else
 		{
+			if (EquipedTool != null)
+			{
+				EquipedTool.UnEquip();
+			}
 			EquipedToolItem = null;
 			EquipedTool = null;
 		}
@@ -68,7 +73,8 @@ public partial class ToolManager : Node
 		{
 			if (EquipedTool is null)
 			{
-				ItemStack item = ToolInventory.Items[0];
+				ItemStack item = ToolInventory.Items[ToolInventory.Items.FindIndex(item => item != null)];
+				
 
 				_equipTool(item);
 			}

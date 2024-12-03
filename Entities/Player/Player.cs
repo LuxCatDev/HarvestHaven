@@ -1,5 +1,6 @@
 using Game.Common.Inventory;
 using Game.Common.StateMachine;
+using Game.Entities.CellSelection;
 using Godot;
 using GodotUtilities;
 
@@ -32,6 +33,9 @@ public partial class Player : CharacterBody2D
     
     [Node("Components/ToolManager")]
     public ToolManager.ToolManager ToolManager;
+    
+    [Node("Components/CellSelectorController")]
+    public CellSelectorController CellSelectorController;
 
     [Node] public Node2D Textures;
     

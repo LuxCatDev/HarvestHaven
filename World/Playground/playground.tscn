@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bnsit710xojsd"]
+[gd_scene load_steps=8 format=4 uid="uid://bnsit710xojsd"]
 
 [ext_resource type="Script" path="res://World/Playground/Playground.cs" id="1_10t0n"]
 [ext_resource type="TileSet" uid="uid://d2a4067j0bln0" path="res://World/Tilesets/Farm/FarmTileSet.tres" id="1_n7d5q"]
@@ -6,25 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cmcvn53mvfb2v" path="res://Entities/PickableItem/pickable_item.tscn" id="3_rxbo8"]
 [ext_resource type="Resource" uid="uid://cnae4tyrlaha" path="res://Entities/Items/Tools/Gardening/Hoes/SteelHoe/Data/SteelHoe.tres" id="5_5lxv2"]
 [ext_resource type="Script" path="res://Common/Inventory/ItemStack.cs" id="5_74cj3"]
-[ext_resource type="PackedScene" uid="uid://caql0sdir7bhf" path="res://Entities/CellSelection/CellSelector/cell_selector_group.tscn" id="7_jwm4x"]
-[ext_resource type="PackedScene" uid="uid://b5ep4s4m425b0" path="res://Entities/CellSelection/CellSelector/cell_selector.tscn" id="7_nwyaw"]
-[ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="9_1fuxc"]
-[ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/TerrainRule.cs" id="9_q7i8q"]
 
 [sub_resource type="Resource" id="Resource_2pjj1"]
 script = ExtResource("5_74cj3")
 ItemType = ExtResource("5_5lxv2")
 Amount = 1
-
-[sub_resource type="Resource" id="Resource_8omqx"]
-script = ExtResource("9_q7i8q")
-AllowedTerrains = Array[int]([1])
-
-[sub_resource type="Resource" id="Resource_uubpy"]
-script = ExtResource("9_1fuxc")
-Rules = Array[Object]([SubResource("Resource_8omqx")])
-Traits = Array[Object]([])
-Size = Vector2(0, 0)
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -39,8 +25,3 @@ tile_set = ExtResource("1_n7d5q")
 [node name="PickableItem" parent="." instance=ExtResource("3_rxbo8")]
 position = Vector2(137, 55)
 Stack = SubResource("Resource_2pjj1")
-
-[node name="CellSelectorGroup" parent="." instance=ExtResource("7_jwm4x")]
-Size = Vector2(2, 2)
-_cellSelectorScene = ExtResource("7_nwyaw")
-Config = SubResource("Resource_uubpy")

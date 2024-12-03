@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://crlxl54ekqu1r"]
+[gd_scene load_steps=3 format=3 uid="uid://crlxl54ekqu1r"]
 
 [ext_resource type="Script" path="res://Entities/CellSelection/CellSelectorController.cs" id="1_qkbeh"]
+[ext_resource type="PackedScene" uid="uid://caql0sdir7bhf" path="res://Entities/CellSelection/CellSelector/cell_selector_group.tscn" id="2_5u8hy"]
 
 [node name="CellSelectorController" type="Node2D"]
 script = ExtResource("1_qkbeh")
+_cellSelectorGroupScene = ExtResource("2_5u8hy")

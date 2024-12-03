@@ -1,15 +1,56 @@
 using Godot;
-using System;
+using Game.Entities.CellSelection.CellSelector;
+using Game.Entities.CellSelection.Config;
+
+namespace Game.Entities.CellSelection;
 
 public partial class CellSelectorController : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	[Export] public CellSelectorConfig Config;
+	[Export] private PackedScene _cellSelectorGroupScene;
+	
+	private CellSelectorGroup _cellSelectorGroup;
+	
+	public void Enable()
 	{
+		CellSelectorGroup group = _cellSelectorGroupScene.Instantiate<CellSelectorGroup>();
+
+		group.Config = Config;
+		
+		_cellSelectorGroup = group;
+		
+		AddChild(group);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void Disable()
 	{
+		if (_cellSelectorGroup != null)
+		{
+			_cellSelectorGroup.QueueFree();
+			_cellSelectorGroup = null;
+		}
+	}
+
+	public bool ExecTraits()
+	{
+		if (_cellSelectorGroup != null)
+		{
+			if (_cellSelectorGroup.Valid)
+			{
+				foreach (var trait in Config.Traits)
+				{
+					if (!trait.Validate())
+					{
+						return false;
+					}
+
+					trait.Exec();
+				}
+
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

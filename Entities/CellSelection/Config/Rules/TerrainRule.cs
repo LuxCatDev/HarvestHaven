@@ -27,14 +27,16 @@ public partial class TerrainRule: CellSelectorRule
 
         int terrainId = data.GetCustomData("TerrainType").As<int>();
 
+        bool res = false;
+
         foreach (TerrainType terrainType in AllowedTerrains)
         {
-            if ((int)terrainType != terrainId)
+            if ((int)terrainType == terrainId)
             {
-                return false;
+                res = true;
             }
         }
 
-        return true;
+        return res;
     }
 }

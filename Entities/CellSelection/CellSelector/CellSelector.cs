@@ -24,9 +24,15 @@ public partial class CellSelector : Node2D
 
 	public Vector2I TilePosition;
 
+	private bool _state;
+
 	public bool State
 	{
-		set
+		get
+		{
+			return _state;
+		}
+		private set
 		{
 			if (value)
 			{
@@ -36,6 +42,8 @@ public partial class CellSelector : Node2D
 			{
 				_animationPlayer.Play("Wrong");
 			}
+			
+			_state = value;
 		}
 	}
 	

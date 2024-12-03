@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Game.Entities.CellSelection.Config;
 using GodotUtilities;
 
 namespace Game.Entities.Items.Tools.Gardening;
@@ -14,8 +15,8 @@ public partial class GardeningTool : Tool
 			WireNodes(); // this is a generated method
 		}
 	}
-
-	[Export] private Vector2 _digArea = new(1, 1);
+	
+	[Export] private CellSelectorConfig _selectorConfig;
 	
 	[Node]
 	public AnimationPlayer AnimationPlayer;
@@ -24,7 +25,6 @@ public partial class GardeningTool : Tool
 
 	public override void UpdateAnimation(string anim)
 	{
-		GD.Print($"Animation: {anim}");
 		AnimationPlayer.Play(anim);
 	}
 	
@@ -41,5 +41,16 @@ public partial class GardeningTool : Tool
 	public void Use()
 	{
 		
+	}
+
+	public override void Equip(){
+		GameManager.Instance.Player.CellSelectorController.Config = _selectorConfig;
+		GameManager.Instance.Player.CellSelectorController.Enable();
+	}
+
+	public override void UnEquip()
+	{
+		GameManager.Instance.Player.CellSelectorController.Config = null;
+		GameManager.Instance.Player.CellSelectorController.Disable();
 	}
 }
