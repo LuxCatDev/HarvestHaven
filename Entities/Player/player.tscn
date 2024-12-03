@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bpm1ge32gn272"]
+[gd_scene load_steps=50 format=3 uid="uid://bpm1ge32gn272"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_y4jji"]
 [ext_resource type="Texture2D" uid="uid://c7juo007capua" path="res://Entities/Player/Art/PlayerNackedHead.png" id="2_d8seh"]
@@ -9,11 +9,13 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_d56wu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_08gk5"]
 [ext_resource type="Script" path="res://Common/StateMachine/StateMachine.cs" id="9_giroa"]
+[ext_resource type="Script" path="res://Entities/Player/States/Events/OnToolUsed.cs" id="10_lrlmp"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerMoveState.cs" id="10_xgytf"]
 [ext_resource type="Script" path="res://Common/StateMachine/StateEvent.cs" id="11_mmo3y"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerIdleState.cs" id="12_1nr54"]
 [ext_resource type="PackedScene" uid="uid://bjakiysypeqtv" path="res://Entities/UI/PlayerHUD/player_hud.tscn" id="13_c82hi"]
 [ext_resource type="PackedScene" uid="uid://k1v5blb0w3r2" path="res://Common/Inventory/inventory.tscn" id="14_50kcl"]
+[ext_resource type="Script" path="res://Entities/Player/States/PlayerUsingToolState.cs" id="14_s1otq"]
 [ext_resource type="PackedScene" uid="uid://ca3f4keg41eh4" path="res://Entities/ToolManager/tool_manager.tscn" id="15_rfjph"]
 [ext_resource type="PackedScene" uid="uid://crlxl54ekqu1r" path="res://Entities/CellSelection/cell_selector_controller.tscn" id="16_rxf5u"]
 [ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="17_3jrlv"]
@@ -1518,6 +1520,9 @@ script = ExtResource("9_giroa")
 _player = NodePath("..")
 _initialState = NodePath("Idle")
 
+[node name="OnToolUsed" type="Node" parent="StateMachine"]
+script = ExtResource("10_lrlmp")
+
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("_toolManager", "_launchEvents")]
 script = ExtResource("10_xgytf")
 _toolManager = NodePath("../../Components/ToolManager")
@@ -1532,6 +1537,15 @@ _toolManager = NodePath("../../Components/ToolManager")
 _launchEvents = [NodePath("../Move/OnPlayerStopMoving")]
 
 [node name="OnPlayerMove" type="Node" parent="StateMachine/Idle"]
+script = ExtResource("11_mmo3y")
+
+[node name="UsingTool" type="Node" parent="StateMachine" node_paths=PackedStringArray("_toolManager", "_nextState", "_launchEvents")]
+script = ExtResource("14_s1otq")
+_toolManager = NodePath("../../Components/ToolManager")
+_nextState = NodePath("../Idle")
+_launchEvents = [NodePath("../OnToolUsed")]
+
+[node name="OnStopUsing" type="Node" parent="StateMachine/UsingTool"]
 script = ExtResource("11_mmo3y")
 
 [node name="PlayerHud" parent="." instance=ExtResource("13_c82hi")]
@@ -1552,7 +1566,9 @@ Textures = NodePath("../../Textures")
 [node name="CellSelectorController" parent="Components" instance=ExtResource("16_rxf5u")]
 Config = SubResource("Resource_6n0r1")
 
+[connection signal="OnStopUsing" from="Components/ToolManager" to="StateMachine/UsingTool" method="_onStopUsing"]
 [connection signal="OnToolEquiped" from="Components/ToolManager" to="StateMachine/Move" method="_onToolEquiped"]
 [connection signal="OnToolEquiped" from="Components/ToolManager" to="StateMachine/Idle" method="_onToolEquiped"]
+[connection signal="OnToolUsed" from="Components/ToolManager" to="StateMachine/OnToolUsed" method="_onToolUsed"]
 [connection signal="OnUnEquipTool" from="Components/ToolManager" to="StateMachine/Move" method="_onUnEquipTool"]
 [connection signal="OnUnEquipTool" from="Components/ToolManager" to="StateMachine/Idle" method="_onUnEquipTool"]

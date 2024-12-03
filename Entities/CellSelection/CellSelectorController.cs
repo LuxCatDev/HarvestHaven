@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using Game.Entities.CellSelection.CellSelector;
 using Game.Entities.CellSelection.Config;
@@ -10,7 +11,12 @@ public partial class CellSelectorController : Node2D
 	[Export] private PackedScene _cellSelectorGroupScene;
 	
 	private CellSelectorGroup _cellSelectorGroup;
+
+	public bool Valid => _cellSelectorGroup.Valid;
+	public List<CellSelector.CellSelector> Selectors => _cellSelectorGroup.Selectors;
 	
+	public Vector2 GroupPosition => _cellSelectorGroup.GlobalPosition;
+
 	public void Enable()
 	{
 		CellSelectorGroup group = _cellSelectorGroupScene.Instantiate<CellSelectorGroup>();
@@ -39,12 +45,12 @@ public partial class CellSelectorController : Node2D
 			{
 				foreach (var trait in Config.Traits)
 				{
-					if (!trait.Validate())
+					if (!trait.Validate(this))
 					{
 						return false;
 					}
 
-					trait.Exec();
+					trait.Exec(this);
 				}
 
 				return true;
@@ -52,5 +58,13 @@ public partial class CellSelectorController : Node2D
 		}
 
 		return false;
+	}
+
+	public void Update()
+	{
+		foreach (var selector in Selectors)
+		{
+			selector.Update();
+		}
 	}
 }

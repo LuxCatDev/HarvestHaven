@@ -22,6 +22,30 @@ public partial class GardeningTool : Tool
 	public AnimationPlayer AnimationPlayer;
 
 	[Node("Texture")] private Sprite2D _texture;
+	
+	public override string AnimationDirection
+	{
+		get
+		{
+			if (CardinalDirection == Vector2.Down)
+			{
+				return "S";
+			} else if (CardinalDirection == Vector2.Up)
+			{
+				return "N";
+			} else if (CardinalDirection.Y == 0 && CardinalDirection.X != 0)
+			{
+				return "W";
+			} else if (CardinalDirection.X != 0 && CardinalDirection.Y > 0)
+			{
+				return "SW";
+			}
+			else
+			{
+				return "NW";
+			}
+		}
+	}
 
 	public override void UpdateAnimation(string anim)
 	{
@@ -31,6 +55,7 @@ public partial class GardeningTool : Tool
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		AnimationPlayer.AnimationFinished += _onAnimationFinished;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,9 +63,22 @@ public partial class GardeningTool : Tool
 	{
 	}
 
-	public void Use()
+	public void OnContact()
 	{
+		GameManager.Instance.Player.CellSelectorController.Config = _selectorConfig;
+		GameManager.Instance.Player.CellSelectorController.ExecTraits();
+	}
+
+	public override void Use()
+	{
+		if (!GameManager.Instance.Player.CellSelectorController.Valid) return;
 		
+		Vector2 groupPosition = GameManager.Instance.Player.CellSelectorController.GroupPosition;
+		Vector2 direction = GameManager.Instance.Player.GlobalPosition.DirectionTo(groupPosition);
+
+		CardinalDirection = direction.Snapped(Vector2.One);
+		EmitSignal(Tool.SignalName.OnUsed);
+		AnimationPlayer.Play("Use_" + AnimationDirection);
 	}
 
 	public override void Equip(){
@@ -52,5 +90,13 @@ public partial class GardeningTool : Tool
 	{
 		GameManager.Instance.Player.CellSelectorController.Config = null;
 		GameManager.Instance.Player.CellSelectorController.Disable();
+	}
+	
+	private void _onAnimationFinished(Godot.StringName anim)
+	{
+		if (anim.ToString().StartsWith("Use"))
+		{
+			EmitSignal(Tool.SignalName.OnStopUsing);
+		}
 	}
 }

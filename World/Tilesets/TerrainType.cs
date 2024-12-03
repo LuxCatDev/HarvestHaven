@@ -5,9 +5,9 @@ namespace Game.World.TileSets;
 
 public enum TerrainType
 {
-    Grass = 1,
-    Dirt = 2,
-    Soil = 4,
-    WetSoil = 6,
+    Grass = 0,
+    Dirt = 1,
+    Soil = 2,
+    WetSoil = 3,
 }
 

@@ -6,12 +6,12 @@ namespace Game.Entities.CellSelection.Config;
 [GlobalClass]
 public partial class CellSelectorTrait : Resource
 {
-    public virtual bool Validate()
+    public virtual bool Validate(CellSelectorController controller)
     {
         return true;
     }
 
-    public virtual void Exec()
+    public virtual void Exec(CellSelectorController controller)
     {
         
     }

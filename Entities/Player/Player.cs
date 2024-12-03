@@ -48,7 +48,7 @@ public partial class Player : CharacterBody2D
     public Vector2 CardinalDirection
     {
         get;
-        private set;
+        set;
     }
 
     public string AnimationDirection
@@ -109,6 +109,7 @@ public partial class Player : CharacterBody2D
     
     public void UpdateAnimation(string anim)
     {
+        GD.Print(CardinalDirection, AnimationDirection);
         AnimationPlayer.Play(anim + "_" + AnimationDirection);
     }
 }

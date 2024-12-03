@@ -26,6 +26,11 @@ public partial class CellSelectorGroup : Node2D
 	
 	public CellSelectorConfig Config;
 
+	public List<CellSelector> Selectors
+	{
+		get => _selectors;
+	}
+
 	public bool Valid
 	{
 		get

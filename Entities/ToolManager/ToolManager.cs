@@ -14,6 +14,12 @@ public partial class ToolManager : Node
 	
 	[Signal]
 	public delegate void OnUnEquipToolEventHandler();
+
+	[Signal]
+	public delegate void OnToolUsedEventHandler();
+	
+	[Signal]
+	public delegate void OnStopUsingEventHandler();
 	
 	[Export] public Inventory ToolInventory;
 	[Export] public Node2D Textures;
@@ -21,6 +27,8 @@ public partial class ToolManager : Node
 	private Tool _equipedTool;
 
 	public ToolItem EquipedToolItem;
+
+	public bool Pause = false;
 	
 	public Tool EquipedTool
 	{
@@ -30,6 +38,8 @@ public partial class ToolManager : Node
 			if (value != null)
 			{
 				_equipedTool = value;
+				value.OnUsed += () => EmitSignal(SignalName.OnToolUsed);
+				value.OnStopUsing += () => EmitSignal(SignalName.OnStopUsing);
 				Textures.AddChild(value);
 				value.Equip();
 				EmitSignal(SignalName.OnToolEquiped);
@@ -69,6 +79,8 @@ public partial class ToolManager : Node
 
 	public override void _Input(InputEvent @event)
 	{
+		if (Pause) return;
+		
 		if (@event.IsActionPressed("change_tool"))
 		{
 			if (EquipedTool is null)
@@ -88,6 +100,14 @@ public partial class ToolManager : Node
 
 					_equipTool(item);
 				}
+			}
+		}
+
+		if (@event.IsActionPressed("primary_action"))
+		{
+			if (EquipedTool != null)
+			{
+				EquipedTool.Use();
 			}
 		}
 	}

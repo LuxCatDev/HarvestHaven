@@ -1,17 +1,22 @@
-[gd_scene load_steps=23 format=3 uid="uid://btmserft7n0e6"]
+[gd_scene load_steps=25 format=3 uid="uid://btmserft7n0e6"]
 
 [ext_resource type="Script" path="res://Entities/Items/Tools/Gardening/GardeningTool.cs" id="1_uxea8"]
 [ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/TerrainRule.cs" id="2_4alax"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/Traits/TerraformTrait.cs" id="3_8fw5a"]
 [ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="3_c3iro"]
 
 [sub_resource type="Resource" id="Resource_5kf3t"]
 script = ExtResource("2_4alax")
 AllowedTerrains = Array[int]([1, 2])
 
+[sub_resource type="Resource" id="Resource_gk3p0"]
+script = ExtResource("3_8fw5a")
+TerraformType = 2
+
 [sub_resource type="Resource" id="Resource_fxc2v"]
 script = ExtResource("3_c3iro")
 Rules = Array[Object]([SubResource("Resource_5kf3t")])
-Traits = null
+Traits = Array[Object]([SubResource("Resource_gk3p0")])
 Size = Vector2(1, 1)
 
 [sub_resource type="Animation" id="Animation_vdkkn"]
@@ -125,6 +130,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [62, 63]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnContact"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_tkpuf"]
 resource_name = "Use_NW"
@@ -141,6 +160,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [60, 61]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnContact"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_6b6p3"]
@@ -159,6 +192,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [54, 55]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnContact"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rdpbo"]
 resource_name = "Use_SW"
@@ -176,6 +223,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [56, 57]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnContact"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3vy7a"]
 resource_name = "Use_W"
@@ -192,6 +253,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [58, 59]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnContact"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vdjc2"]
