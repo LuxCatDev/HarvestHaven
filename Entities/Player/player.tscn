@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bpm1ge32gn272"]
+[gd_scene load_steps=52 format=3 uid="uid://bpm1ge32gn272"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_y4jji"]
 [ext_resource type="Texture2D" uid="uid://c7juo007capua" path="res://Entities/Player/Art/PlayerNackedHead.png" id="2_d8seh"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://ca3f4keg41eh4" path="res://Entities/ToolManager/tool_manager.tscn" id="15_rfjph"]
 [ext_resource type="PackedScene" uid="uid://crlxl54ekqu1r" path="res://Entities/CellSelection/cell_selector_controller.tscn" id="16_rxf5u"]
 [ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="17_3jrlv"]
+[ext_resource type="PackedScene" uid="uid://rsghoefjsdc" path="res://Entities/BuildingMode/building_mode_controller.tscn" id="20_jocbf"]
+[ext_resource type="Resource" uid="uid://lwbo4ck8qbkm" path="res://Entities/Objects/Placeable/Furniture/Bed/Bed.tres" id="21_5tqso"]
 
 [sub_resource type="Animation" id="Animation_insb1"]
 resource_name = "Idle_N"
@@ -1565,6 +1567,10 @@ Textures = NodePath("../../Textures")
 
 [node name="CellSelectorController" parent="Components" instance=ExtResource("16_rxf5u")]
 Config = SubResource("Resource_6n0r1")
+
+[node name="BuildingModeController" parent="Components" node_paths=PackedStringArray("_cellSelectorController") instance=ExtResource("20_jocbf")]
+Placeable = ExtResource("21_5tqso")
+_cellSelectorController = NodePath("../CellSelectorController")
 
 [connection signal="OnStopUsing" from="Components/ToolManager" to="StateMachine/UsingTool" method="_onStopUsing"]
 [connection signal="OnToolEquiped" from="Components/ToolManager" to="StateMachine/Move" method="_onToolEquiped"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Placeable" load_steps=9 format=3 uid="uid://lwbo4ck8qbkm"]
+
+[ext_resource type="Script" path="res://Entities/Objects/Placeable/Placeable.cs" id="1_3xwx5"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/TerrainRule.cs" id="1_ikbn7"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="2_q4duo"]
+[ext_resource type="Script" path="res://Entities/BuildingMode/Config/BuildingModeConfig.cs" id="3_s5lk4"]
+[ext_resource type="PackedScene" uid="uid://bagd72tk33pai" path="res://Entities/Objects/Placeable/Furniture/Bed/bed.tscn" id="4_j3b7u"]
+
+[sub_resource type="Resource" id="Resource_s5o2m"]
+script = ExtResource("1_ikbn7")
+AllowedTerrains = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_4u4kg"]
+script = ExtResource("2_q4duo")
+Rules = Array[Object]([SubResource("Resource_s5o2m")])
+Traits = Array[Object]([])
+Size = Vector2(1, 2)
+
+[sub_resource type="Resource" id="Resource_5ajnd"]
+script = ExtResource("3_s5lk4")
+CellSelectorConfig = SubResource("Resource_4u4kg")
+
+[resource]
+script = ExtResource("1_3xwx5")
+BuildingModeConfig = SubResource("Resource_5ajnd")
+Name = "Bed"
+Scene = ExtResource("4_j3b7u")
+Category = 0

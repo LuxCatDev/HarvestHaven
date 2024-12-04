@@ -9,6 +9,7 @@ public partial class CellSelectorController : Node2D
 {
 	[Export] public CellSelectorConfig Config;
 	[Export] private PackedScene _cellSelectorGroupScene;
+	[Export] public Node2D Preview;
 	
 	private CellSelectorGroup _cellSelectorGroup;
 
@@ -17,6 +18,14 @@ public partial class CellSelectorController : Node2D
 	
 	public Vector2 GroupPosition => _cellSelectorGroup.GlobalPosition;
 
+	public override void _Process(double delta)
+	{
+		if (Preview != null)
+		{
+			Preview.GlobalPosition = _cellSelectorGroup.GlobalPosition;
+		}
+	}
+
 	public void Enable()
 	{
 		CellSelectorGroup group = _cellSelectorGroupScene.Instantiate<CellSelectorGroup>();
@@ -24,6 +33,11 @@ public partial class CellSelectorController : Node2D
 		group.Config = Config;
 		
 		_cellSelectorGroup = group;
+
+		if (Preview != null)
+		{
+			AddChild(Preview);
+		}
 		
 		AddChild(group);
 	}
@@ -66,5 +80,11 @@ public partial class CellSelectorController : Node2D
 		{
 			selector.Update();
 		}
+	}
+
+	public void UpdateSize(Vector2 newSize)
+	{
+		_cellSelectorGroup.Config.Size = newSize;
+		_cellSelectorGroup.UpdateSelectors();
 	}
 }

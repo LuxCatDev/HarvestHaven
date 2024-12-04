@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rsghoefjsdc"]
+
+[ext_resource type="Script" path="res://Entities/BuildingMode/BuildingModeController.cs" id="1_51oft"]
+
+[node name="BuildingModeController" type="Node2D"]
+script = ExtResource("1_51oft")

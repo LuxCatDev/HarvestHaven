@@ -50,6 +50,18 @@ public partial class CellSelectorGroup : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		UpdateSelectors();
+	}
+
+	public void UpdateSelectors()
+	{
+		if (_selectors != null && _selectors.Count != 0)
+		{
+			foreach (var selector in _selectors)
+			{
+				selector.QueueFree();
+			}
+		}
 		_selectors = new List<CellSelector>();
 		
 		foreach (var y in Enumerable.Range(0, (int)Config.Size.Y))

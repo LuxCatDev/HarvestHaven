@@ -14,6 +14,8 @@
     <Folder Include="Entities\Items\RawMaterials\Data\" />
     <Folder Include="Entities\Items\SeedPacks\" />
     <Folder Include="Entities\Items\Tools\" />
+    <Folder Include="Entities\Objects\Placeable\Art\" />
+    <Folder Include="Entities\Objects\Placeable\Data\" />
     <Folder Include="Entities\UI\InventorySlot\" />
   </ItemGroup>
 </Project>

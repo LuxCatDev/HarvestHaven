@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bagd72tk33pai"]
+
+[ext_resource type="PackedScene" uid="uid://yfp5aiy5d3gw" path="res://Entities/Objects/Placeable/placeable_object.tscn" id="1_teqmd"]
+[ext_resource type="Texture2D" uid="uid://de6lynitowb18" path="res://Entities/Objects/Placeable/Art/CraftableObjects.png" id="2_difdc"]
+
+[node name="Bed" instance=ExtResource("1_teqmd")]
+_previewColor = Color(1, 1, 1, 0.678431)
+
+[node name="Texture" parent="." index="0"]
+texture = ExtResource("2_difdc")
