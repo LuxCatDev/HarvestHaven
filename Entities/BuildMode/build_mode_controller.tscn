@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://rsghoefjsdc"]
+
+[ext_resource type="Script" path="res://Entities/BuildMode/BuildModeController.cs" id="1_p13ym"]
+[ext_resource type="PackedScene" uid="uid://bywaw17bscssc" path="res://Entities/UI/BuildMode/build_mode_ui.tscn" id="2_eh2er"]
+
+[node name="BuildModeController" type="Node2D"]
+visible = false
+script = ExtResource("1_p13ym")
+
+[node name="BuildModeUi" parent="." instance=ExtResource("2_eh2er")]
+
+[connection signal="OnObjectItemSelected" from="BuildModeUi" to="." method="_OnObjectSelected"]

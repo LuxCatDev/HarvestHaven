@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Game.Common.Inventory;
 using Game.UI.InventorySlot;
+using Game.Utilities.GameMode;
 using Godot;
 using GodotUtilities;
 
@@ -35,7 +36,7 @@ public partial class PlayerInventoryDialog: Control
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (!@event.IsActionPressed("open_inventory")) return;
+        if (!@event.IsActionPressed("open_inventory") || GameManager.Instance.Mode != GameMode.Normal) return;
         if (Visible) {
             Visible = false;
         } else {

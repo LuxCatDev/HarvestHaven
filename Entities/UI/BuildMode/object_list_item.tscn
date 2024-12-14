@@ -1,0 +1,167 @@
+[gd_scene load_steps=15 format=3 uid="uid://bps2qpv61v8dw"]
+
+[ext_resource type="Script" path="res://Entities/UI/BuildMode/ObjectListItem.cs" id="1_1128p"]
+[ext_resource type="Texture2D" uid="uid://cbxywk4b333gh" path="res://Entities/UI/BuildMode/Art/BuildingMode.png" id="1_vrep5"]
+[ext_resource type="Texture2D" uid="uid://de6lynitowb18" path="res://Entities/Objects/Placeable/Art/CraftableObjects.png" id="2_fkhds"]
+[ext_resource type="FontFile" uid="uid://f6hx1dtxttsb" path="res://Assets/Fonts/BitPotionExt.ttf" id="3_h11tb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob3hx"]
+atlas = ExtResource("1_vrep5")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eijx4"]
+texture = SubResource("AtlasTexture_ob3hx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eg24j"]
+atlas = ExtResource("2_fkhds")
+region = Rect2(128, 64, 128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_82hvp"]
+font = ExtResource("3_h11tb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj7qj"]
+line_spacing = 0.0
+font = ExtResource("3_h11tb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lggre"]
+font = ExtResource("3_h11tb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16fr6"]
+atlas = ExtResource("1_vrep5")
+region = Rect2(235, 113, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwsd5"]
+atlas = ExtResource("1_vrep5")
+region = Rect2(194, 114, 32, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_blwv6"]
+font = ExtResource("3_h11tb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1gju"]
+atlas = ExtResource("1_vrep5")
+region = Rect2(194, 126, 32, 10)
+
+[node name="ObjectListItem" type="Control"]
+custom_minimum_size = Vector2(180, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1128p")
+
+[node name="Icon" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_eijx4")
+
+[node name="Texture" type="TextureRect" parent="Icon"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_eg24j")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 111.0
+offset_bottom = 23.0
+text = "Bed"
+label_settings = SubResource("LabelSettings_82hvp")
+
+[node name="Description" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 0
+offset_left = 71.0
+offset_top = 17.0
+offset_right = 198.0
+offset_bottom = 53.0
+scale = Vector2(0.85, 0.85)
+text = "Description"
+label_settings = SubResource("LabelSettings_pj7qj")
+autowrap_mode = 1
+clip_text = true
+
+[node name="Value" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Value"]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 2.0
+offset_right = 28.0
+offset_bottom = 25.0
+scale = Vector2(0.85, 0.85)
+text = "1000"
+label_settings = SubResource("LabelSettings_lggre")
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Value"]
+layout_mode = 0
+offset_left = 23.0
+offset_right = 39.0
+offset_bottom = 16.0
+texture = SubResource("AtlasTexture_16fr6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="BuildButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -16.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_cwsd5")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="BuildButton"]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 18.0
+scale = Vector2(0.75, 0.75)
+text = "Build"
+label_settings = SubResource("LabelSettings_blwv6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -16.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_u1gju")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="SelectedButton"]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 49.0
+offset_bottom = 18.0
+scale = Vector2(0.75, 0.75)
+text = "Selected"
+label_settings = SubResource("LabelSettings_blwv6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="BuildButton" to="." method="_OnButtonPressed"]

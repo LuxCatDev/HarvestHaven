@@ -37,7 +37,7 @@ public partial class PickableItem : StaticBody2D
 
     public override void _Ready()
     {
-        _texture.Texture = Stack.ItemType.Logo;
+        _texture.Texture = Stack.ItemType.Texture;
         GetTree().CreateTimer(0.5).Timeout += () =>
         {
             _pickable = true;

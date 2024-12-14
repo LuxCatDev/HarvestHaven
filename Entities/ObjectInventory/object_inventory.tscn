@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr266sglkm6fn"]
+
+[ext_resource type="Script" path="res://Entities/ObjectInventory/ObjectInventory.cs" id="1_x0hhe"]
+
+[node name="ObjectInventory" type="Node2D"]
+script = ExtResource("1_x0hhe")

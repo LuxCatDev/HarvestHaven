@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjakiysypeqtv"]
+[gd_scene load_steps=4 format=3 uid="uid://bjakiysypeqtv"]
 
 [ext_resource type="PackedScene" uid="uid://dffuvjoemip14" path="res://Entities/UI/PlayerHUD/HotBar/hot_bar.tscn" id="1_nai60"]
+[ext_resource type="Script" path="res://Entities/UI/PlayerHUD/PlayerHud.cs" id="1_vb7je"]
 [ext_resource type="PackedScene" uid="uid://d3qnqlax3hx2c" path="res://Entities/UI/PlayerHUD/PlayerInventoryDialog/player_inventory_dialog.tscn" id="2_f7qn5"]
 
 [node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_vb7je")
 
 [node name="HotBar" parent="." instance=ExtResource("1_nai60")]
 anchors_preset = 7

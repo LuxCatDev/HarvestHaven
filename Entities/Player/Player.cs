@@ -1,5 +1,6 @@
 using Game.Common.Inventory;
 using Game.Common.StateMachine;
+using Game.Entities.BuildMode;
 using Game.Entities.CellSelection;
 using Godot;
 using GodotUtilities;
@@ -36,6 +37,9 @@ public partial class Player : CharacterBody2D
     
     [Node("Components/CellSelectorController")]
     public CellSelectorController CellSelectorController;
+    
+    [Node("Components/BuildModeController")]
+    public BuildModeController BuildModeController;
 
     [Node] public Node2D Textures;
     
@@ -109,7 +113,6 @@ public partial class Player : CharacterBody2D
     
     public void UpdateAnimation(string anim)
     {
-        GD.Print(CardinalDirection, AnimationDirection);
         AnimationPlayer.Play(anim + "_" + AnimationDirection);
     }
 }

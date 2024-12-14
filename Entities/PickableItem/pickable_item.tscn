@@ -42,7 +42,7 @@ _data = {
 }
 
 [node name="PickableItem" type="StaticBody2D"]
-z_index = 2
+z_index = 1
 script = ExtResource("1_v3pw1")
 
 [node name="Texture" type="Sprite2D" parent="."]

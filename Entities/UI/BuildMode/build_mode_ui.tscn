@@ -1,0 +1,364 @@
+[gd_scene load_steps=15 format=3 uid="uid://bywaw17bscssc"]
+
+[ext_resource type="Script" path="res://Entities/UI/BuildMode/BuildModeUi.cs" id="1_1i2vb"]
+[ext_resource type="Texture2D" uid="uid://cbxywk4b333gh" path="res://Entities/UI/BuildMode/Art/BuildingMode.png" id="2_4e1x0"]
+[ext_resource type="Texture2D" uid="uid://de6lynitowb18" path="res://Entities/Objects/Placeable/Art/CraftableObjects.png" id="3_bbrm8"]
+[ext_resource type="PackedScene" uid="uid://bps2qpv61v8dw" path="res://Entities/UI/BuildMode/object_list_item.tscn" id="3_w8alp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmbrg"]
+atlas = ExtResource("2_4e1x0")
+region = Rect2(438, 0, 202, 360)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pw4j5"]
+texture = SubResource("AtlasTexture_hmbrg")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swuad"]
+atlas = ExtResource("2_4e1x0")
+region = Rect2(391, 13, 38, 38)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ubsc"]
+texture = SubResource("AtlasTexture_swuad")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lonis"]
+atlas = ExtResource("3_bbrm8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yu5g"]
+atlas = ExtResource("2_4e1x0")
+region = Rect2(399, 326, 31, 30)
+
+[sub_resource type="Animation" id="Animation_taqvb"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectInventoryDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(438, 0), Vector2(652, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectInventoryDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pages:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(388, 12), Vector2(596, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(395, 324), Vector2(600, 324)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wnj5i"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectInventoryDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(652, 0), Vector2(438, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectInventoryDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pages:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(596, 12), Vector2(388, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(606, 324), Vector2(395, 324)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kwkb3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ObjectInventoryDisplay:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(438, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ObjectInventoryDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pages:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(388, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(395, 324)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8hemh"]
+_data = {
+"Close": SubResource("Animation_taqvb"),
+"Open": SubResource("Animation_wnj5i"),
+"RESET": SubResource("Animation_kwkb3")
+}
+
+[node name="BuildModeUi" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_1i2vb")
+ObjectListItemScene = ExtResource("3_w8alp")
+
+[node name="ObjectInventoryDisplay" type="Panel" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -180.0
+offset_bottom = 180.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pw4j5")
+
+[node name="Scroll" type="ScrollContainer" parent="ObjectInventoryDisplay"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 191.0
+offset_bottom = 348.0
+
+[node name="ObjectList" type="VBoxContainer" parent="ObjectInventoryDisplay/Scroll"]
+layout_mode = 2
+
+[node name="Pages" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 68.0
+offset_top = 12.0
+offset_right = 108.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_constants/separation = 25
+
+[node name="PageSelector" type="PanelContainer" parent="Pages"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ubsc")
+
+[node name="Icon" type="TextureRect" parent="Pages/PageSelector"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lonis")
+expand_mode = 1
+
+[node name="PageSelector2" type="PanelContainer" parent="Pages"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ubsc")
+
+[node name="Icon" type="TextureRect" parent="Pages/PageSelector2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lonis")
+expand_mode = 1
+
+[node name="PageSelector3" type="PanelContainer" parent="Pages"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ubsc")
+
+[node name="Icon" type="TextureRect" parent="Pages/PageSelector3"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lonis")
+expand_mode = 1
+
+[node name="PageSelector4" type="PanelContainer" parent="Pages"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ubsc")
+
+[node name="Icon" type="TextureRect" parent="Pages/PageSelector4"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lonis")
+expand_mode = 1
+
+[node name="PageSelector5" type="PanelContainer" parent="Pages"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ubsc")
+
+[node name="Icon" type="TextureRect" parent="Pages/PageSelector5"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lonis")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -36.0
+offset_right = -213.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = 3.14159
+scale = Vector2(-1, 1)
+pivot_offset = Vector2(16, 16)
+texture_normal = SubResource("AtlasTexture_4yu5g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8hemh")
+}
+autoplay = "RESET"
+
+[connection signal="pressed" from="Button" to="." method="_OnButtonPressed"]
