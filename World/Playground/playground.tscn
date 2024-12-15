@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bnsit710xojsd"]
+[gd_scene load_steps=9 format=4 uid="uid://bnsit710xojsd"]
 
 [ext_resource type="Script" path="res://World/Playground/Playground.cs" id="1_10t0n"]
 [ext_resource type="TileSet" uid="uid://d2a4067j0bln0" path="res://World/Tilesets/Farm/FarmTileSet.tres" id="1_n7d5q"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cmcvn53mvfb2v" path="res://Entities/PickableItem/pickable_item.tscn" id="3_rxbo8"]
 [ext_resource type="Resource" uid="uid://cnae4tyrlaha" path="res://Entities/Items/Tools/Gardening/Hoes/SteelHoe/Data/SteelHoe.tres" id="5_5lxv2"]
 [ext_resource type="Script" path="res://Common/Inventory/ItemStack.cs" id="5_74cj3"]
+[ext_resource type="PackedScene" uid="uid://bagd72tk33pai" path="res://Entities/Objects/Placeable/Furniture/Bed/bed.tscn" id="7_jg6hv"]
 
 [sub_resource type="Resource" id="Resource_2pjj1"]
 script = ExtResource("5_74cj3")
@@ -13,7 +14,6 @@ ItemType = ExtResource("5_5lxv2")
 Amount = 1
 
 [node name="Playground" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_10t0n")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -21,7 +21,13 @@ tile_map_data = PackedByteArray("AAAKAAUAAAABAAIAAAAKAAQAAAACAAIAAAAKAAMAAAACAAI
 tile_set = ExtResource("1_n7d5q")
 
 [node name="Player" parent="." instance=ExtResource("2_sncg0")]
+position = Vector2(63, 57)
 
 [node name="PickableItem" parent="." instance=ExtResource("3_rxbo8")]
 position = Vector2(137, 55)
 Stack = SubResource("Resource_2pjj1")
+
+[node name="Bed" parent="." instance=ExtResource("7_jg6hv")]
+
+[node name="Bed2" parent="." instance=ExtResource("7_jg6hv")]
+position = Vector2(83, 37)

@@ -1,10 +1,13 @@
 using System.Drawing;
+using Game.Entities.BuildMode.Config;
 using Godot;
 using Game.Entities.CellSelection;
+using Game.Entities.CellSelection.Config;
 using Game.Entities.ObjectInventory;
 using Game.Entities.Objects.Placeable;
 using Game.UI.BuildMode;
 using Game.Utilities.GameMode;
+using Godot.Collections;
 using GodotUtilities;
 
 namespace Game.Entities.BuildMode;
@@ -25,6 +28,11 @@ public partial class BuildModeController : Node2D
 	
 	[Export] public Placeable Placeable;
 	[Export] private CellSelectorController _cellSelectorController;
+	
+	private CellSelectorConfig _cellSelectorConfig;
+	private BuildModeConfig _buildModeConfig;
+	
+	private PlaceTrait _placeTrait;
 
 	[Export] public ObjectInventory.ObjectInventory Inventory;
 	
@@ -59,10 +67,18 @@ public partial class BuildModeController : Node2D
 		{
 			Rotate();
 		}
+
+		if (@event.IsActionPressed("interact"))
+		{
+			Place();
+		}
 	}
 
 	public override void _Ready()
 	{
+		_buildModeConfig = new BuildModeConfig();
+		_cellSelectorConfig = new CellSelectorConfig();
+		_placeTrait = new PlaceTrait();
 	}
 
 	private void _Open()
@@ -86,10 +102,21 @@ public partial class BuildModeController : Node2D
 		_buildModeUi.SetItems(Inventory.Items);
 	}
 
+	public void Config()
+	{
+		_cellSelectorConfig.Size = _buildModeConfig.Size;
+		_cellSelectorConfig.Rules = _buildModeConfig.Rules;
+		_placeTrait.Placeable = ItemSelected.Object;
+		_cellSelectorConfig.Traits = new Array<CellSelectorTrait> { _placeTrait };
+		_cellSelectorController.Config = _cellSelectorConfig;
+		
+		GD.Print(_cellSelectorConfig.Rules);
+	}
+
 	public void Enable()
 	{
 		Active = true;
-		_cellSelectorController.Config = Placeable.BuildingModeConfig.CellSelectorConfig;
+		Config();
 		_actualObject = Placeable.Scene.Instantiate<PlaceableObject>();
 		_actualObject.Preview = true;
 		_cellSelectorController.Preview = _actualObject;
@@ -111,8 +138,13 @@ public partial class BuildModeController : Node2D
 
 	public void Place()
 	{
-		_cellSelectorController.Config = Placeable.BuildingModeConfig.CellSelectorConfig;
+		if (ItemSelected == null) return;
+		
+		Config();
 		_cellSelectorController.ExecTraits();
+		Inventory.RemoveItem(ItemSelected);
+		LoadInventory();
+		Disable();
 	}
 
 	public void Rotate()
@@ -141,6 +173,7 @@ public partial class BuildModeController : Node2D
 			
 			_actualObject.Orientation =
 				_actualObject.Orientations[index == _actualObject.Orientations.Count - 1 ? 0 : index + 1];
+			_cellSelectorController.Orientation = _actualObject.Orientation;
 		}
 	}
 
@@ -148,6 +181,7 @@ public partial class BuildModeController : Node2D
 	{
 		Placeable = item.Object;
 		ItemSelected = item;
+		_buildModeConfig = ItemSelected.Object.BuildModeConfig;
 		Enable();
 
 		EmitSignal(SignalName.OnSelectedObjectChanged);

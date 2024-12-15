@@ -24,4 +24,9 @@ public partial class ObjectInventory : Node2D
 	{
 		Items.RemoveAt(index);
 	}
+	
+	public void RemoveItem(ObjectItem item)
+	{
+		Items.Remove(item);
+	}
 }

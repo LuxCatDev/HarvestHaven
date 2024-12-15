@@ -211,6 +211,8 @@ _data = {
 }
 
 [node name="PlaceableObject" type="StaticBody2D"]
+z_index = 2
+collision_layer = 4
 script = ExtResource("1_hc7j7")
 
 [node name="Texture" type="Sprite2D" parent="."]

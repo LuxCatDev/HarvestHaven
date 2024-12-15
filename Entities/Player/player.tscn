@@ -1440,7 +1440,9 @@ _data = {
 "Walk_W": SubResource("Animation_g8xym")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w6lq8"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j6na"]
+radius = 6.0
+height = 18.0
 
 [sub_resource type="Resource" id="Resource_a6a5x"]
 script = ExtResource("7_d56wu")
@@ -1500,8 +1502,9 @@ libraries = {
 autoplay = "Idle_SW"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_w6lq8")
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6j6na")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 position = Vector2(0, -30)

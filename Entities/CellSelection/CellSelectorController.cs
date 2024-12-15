@@ -10,6 +10,8 @@ public partial class CellSelectorController : Node2D
 	[Export] public CellSelectorConfig Config;
 	[Export] private PackedScene _cellSelectorGroupScene;
 	[Export] public Node2D Preview;
+
+	public Vector2 Orientation;
 	
 	private CellSelectorGroup _cellSelectorGroup;
 
@@ -36,6 +38,7 @@ public partial class CellSelectorController : Node2D
 
 		if (Preview != null)
 		{
+			Orientation = Vector2.Down;
 			AddChild(Preview);
 		}
 		

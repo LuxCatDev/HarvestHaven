@@ -13,6 +13,8 @@ public partial class GameManager : Node
     public TileMapLayer Map { get; set; }
     
     public GameMode Mode { get; private set; }
+    
+    public Node2D Level { get; set; }
 
     public void ChangeMode(GameMode mode)
     {

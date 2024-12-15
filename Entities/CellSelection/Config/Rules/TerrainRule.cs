@@ -2,7 +2,7 @@ using Game.World.TileSets;
 using Godot;
 using Godot.Collections;
 
-namespace Game.Entities.CellSelection.Config;
+namespace Game.Entities.CellSelection.Config.Rules;
 
 [GlobalClass]
 public partial class TerrainRule: CellSelectorRule

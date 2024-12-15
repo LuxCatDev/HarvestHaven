@@ -1,5 +1,5 @@
 using Godot;
-using Game.Entities.BuildingMode.Config;
+using Game.Entities.BuildMode.Config;
 
 namespace Game.Entities.Objects.Placeable;
 
@@ -7,7 +7,7 @@ namespace Game.Entities.Objects.Placeable;
 public partial class Placeable : GameObject
 {
 	[Export]
-	public BuildingModeConfig BuildingModeConfig { get; set; }
+	public BuildModeConfig BuildModeConfig { get; set; }
 	
 	[Export]
 	public int Value { get; set; }
@@ -20,9 +20,9 @@ public partial class Placeable : GameObject
 	
 	public Placeable() : this("", null, ObjectCategory.Object, null, 0, null, "") { }
 
-	public Placeable(string name, PackedScene scene, ObjectCategory category, BuildingModeConfig buildingModeConfig, int value, AtlasTexture icon, string description) : base(name, scene, category)
+	public Placeable(string name, PackedScene scene, ObjectCategory category, BuildModeConfig buildModeConfig, int value, AtlasTexture icon, string description) : base(name, scene, category)
 	{
-		BuildingModeConfig = buildingModeConfig;
+		BuildModeConfig = buildModeConfig;
 		Value = value;
 		Icon = icon;
 		Description = description;

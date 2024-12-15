@@ -1,25 +1,27 @@
-[gd_resource type="Resource" script_class="Placeable" load_steps=11 format=3 uid="uid://lwbo4ck8qbkm"]
+[gd_resource type="Resource" script_class="Placeable" load_steps=13 format=3 uid="uid://lwbo4ck8qbkm"]
 
 [ext_resource type="Script" path="res://Entities/Objects/Placeable/Placeable.cs" id="1_3xwx5"]
 [ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/TerrainRule.cs" id="1_ikbn7"]
-[ext_resource type="Script" path="res://Entities/CellSelection/Config/CellSelectorConfig.cs" id="2_q4duo"]
-[ext_resource type="Script" path="res://Entities/BuildMode/Config/BuildingModeConfig.cs" id="3_s5lk4"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/IsNotCollidingRule.cs" id="1_t736g"]
+[ext_resource type="Script" path="res://Entities/CellSelection/Config/Rules/IsNotOverPlayerRule.cs" id="2_n5kje"]
 [ext_resource type="Texture2D" uid="uid://de6lynitowb18" path="res://Entities/Objects/Placeable/Art/CraftableObjects.png" id="4_drfkr"]
 [ext_resource type="PackedScene" uid="uid://bagd72tk33pai" path="res://Entities/Objects/Placeable/Furniture/Bed/bed.tscn" id="4_j3b7u"]
+[ext_resource type="Script" path="res://Entities/BuildMode/Config/BuildModeConfig.cs" id="4_qme71"]
 
-[sub_resource type="Resource" id="Resource_s5o2m"]
+[sub_resource type="Resource" id="Resource_ntumg"]
+script = ExtResource("1_t736g")
+
+[sub_resource type="Resource" id="Resource_n5bud"]
+script = ExtResource("2_n5kje")
+
+[sub_resource type="Resource" id="Resource_3x0gt"]
 script = ExtResource("1_ikbn7")
 AllowedTerrains = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_4u4kg"]
-script = ExtResource("2_q4duo")
-Rules = Array[Object]([SubResource("Resource_s5o2m")])
-Traits = Array[Object]([])
+[sub_resource type="Resource" id="Resource_1vcu5"]
+script = ExtResource("4_qme71")
+Rules = Array[Object]([SubResource("Resource_ntumg"), SubResource("Resource_n5bud"), SubResource("Resource_3x0gt")])
 Size = Vector2(1, 2)
-
-[sub_resource type="Resource" id="Resource_5ajnd"]
-script = ExtResource("3_s5lk4")
-CellSelectorConfig = SubResource("Resource_4u4kg")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56rwl"]
 atlas = ExtResource("4_drfkr")
@@ -27,7 +29,7 @@ region = Rect2(128, 64, 128, 128)
 
 [resource]
 script = ExtResource("1_3xwx5")
-BuildingModeConfig = SubResource("Resource_5ajnd")
+BuildModeConfig = SubResource("Resource_1vcu5")
 Value = 50
 Icon = SubResource("AtlasTexture_56rwl")
 Description = "For Sleep"
